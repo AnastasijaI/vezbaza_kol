@@ -1,0 +1,35 @@
+﻿@model Avtor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<body style="
+      background-image: url('https://cdn.wallpapersafari.com/44/77/TQkLbJ.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card text-center border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h2>Details for @Model.Ime @Model.Prezime</h2>
+                    </div>
+                    <div class="card-body">
+                        <p><strong class="text-primary">Ime:</strong> <span class="text-dark">@Model.Ime</span></p>
+                        <p><strong class="text-primary">Prezime:</strong> <span class="text-dark">@Model.Prezime</span></p>
+                        <p><strong class="text-primary">Rodenden:</strong> <span class="text-dark">@Model.DatumRagjanje?.ToShortDateString()</span></p>
+                        <p><strong class="text-primary">Nacionalnost:</strong> <span class="text-dark">@Model.Nacionalnost</span></p>
+                        <p><strong class="text-primary">Pol:</strong> <span class="text-dark">@Model.Pol</span></p>
+                        <div class="form-group mt-3">
+                            <a class="btn btn-outline-success" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                            <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

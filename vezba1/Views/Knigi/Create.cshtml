@@ -1,0 +1,79 @@
+﻿@model vezba1.viewModel.AvtorKnigaEditViewModel
+@{
+    ViewData["Title"] = "Add kniga";
+}
+<body style="background-image: url('https://cdn.wallpapersafari.com/44/77/TQkLbJ.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
+    <div class="row text">
+        <div class="col-md-8 offset-2">
+            <p>
+                <h1 style="text-align: center;">Add a new Author</h1>
+            </p>
+            <div class="row">
+                <div class="col-md-8 offset-2">
+                    <form asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group text-center">
+                            <img id="Slika" class="border-info rounded-circle" style="max-width: 150px" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Kniga.SlikaFile" class="control-label"></label>
+                            <input asp-for="Kniga.SlikaFile" type="file" class="form-control" />
+                            <span asp-validation-for="Kniga.SlikaFile" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Kniga.Naslov" class="control-label"></label>
+                            <input asp-for="Kniga.Naslov" class="form-control" />
+                            <span asp-validation-for="Kniga.Naslov" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Kniga.Godina" class="control-label"></label>
+                            <input asp-for="Kniga.Godina" class="form-control" />
+                            <span asp-validation-for="Kniga.Godina" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Kniga.BrStrani" class="control-label"></label>
+                            <input asp-for="Kniga.BrStrani" class="form-control" />
+                            <span asp-validation-for="Kniga.BrStrani" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Kniga.Opis" class="control-label"></label>
+                            <input asp-for="Kniga.Opis" class="form-control" />
+                            <span asp-validation-for="Kniga.Opis" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Kniga.Zanr" class="control-label"></label>
+                            <input asp-for="Kniga.Zanr" class="form-control" />
+                            <span asp-validation-for="Kniga.Zanr" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Kniga.Tirazh" class="control-label"></label>
+                            <input asp-for="Kniga.Tirazh" class="form-control" />
+                            <span asp-validation-for="Kniga.Tirazh" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Kniga.Izdavac" class="control-label"></label>
+                            <input asp-for="Kniga.Izdavac" class="form-control" />
+                            <span asp-validation-for="Kniga.Izdavac" class="text-danger"></span>
+                        </div>
+                       <div class="form-group">
+                <label asp-for="SelectedAvtors" class="control-label">Avtori</label>
+                <select asp-for="SelectedAvtors" class="form-control" asp-items="Model.AvtorList" multiple></select>
+                </select>
+                <span asp-validation-for="SelectedAvtors" class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-outline-success float-end" />
+                            <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body> 
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Avtor>
+
+@{
+    ViewData["Title"] = "List of Avtori";
+}
+<body style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210504/pngtree-art-of-vintage-paper-for-writers-image_701738.jpg');">
+    <div class="container">
+        <div class="row" style="background-color: beige; padding: 20px;">
+            <div class="col-md-6">
+                <form asp-controller="Avtori" asp-action="Index" method="get">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search by name or last name" name="searchString">
+                        <input type="text" class="form-control" placeholder="Search by nationality" name="searchNationality">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" style="background-color: beige;">
+            <div class="col-md-8 offset-md-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Ime)</th>
+                            <th>@Html.DisplayNameFor(model => model.Prezime)</th>
+                            <th>@Html.DisplayNameFor(model => model.Nacionalnost)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="align-middle">
+                                    <a asp-controller="Knigi" asp-action="KnigiodAvtor" asp-route-authorId="@item.Id">@Html.DisplayFor(modelItem => item.Ime)</a>
+                                </td>
+                                <td class="align-middle">
+                                    <a asp-controller="Knigi" asp-action="KnigiodAvtor" asp-route-authorId="@item.Id">@Html.DisplayFor(modelItem => item.Prezime)</a>
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.Nacionalnost)
+                                </td>
+                                <td class="align-middle">
+                                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a>
+                                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Details</a>
+                                    <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div style="position: fixed; right: 100px; bottom: 100px; color: yellow;" class="text-white">
+            <a asp-controller="Avtori" asp-action="Create" class="btn btn-success">Add New</a>
+        </div>
+    </div>
+</body>

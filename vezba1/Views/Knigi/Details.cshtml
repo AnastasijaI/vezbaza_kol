@@ -1,0 +1,40 @@
+﻿@model vezba1.Models.Kniga
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+ <body style="
+      background-image: url('https://cdn.wallpapersafari.com/44/77/TQkLbJ.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card text-center border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h2>@Model.Naslov</h2>
+                    </div>
+                    <div class="card-body">
+                        <img src="@Model.SlikaUrl" alt="Book Front Page" class="img-fluid mt-2" style="max-height: 400px;" />
+                        <p><strong class="text-primary">Avtor:
+                                @foreach (var avtorKniga in Model.AvtorKnigi)
+                        {
+                            <span class="text-dark">@avtorKniga.Avtor.Ime @avtorKniga.Avtor.Prezime</span>
+
+                            <br />
+                        }</p>
+                        <p><strong class="text-primary">Opis:</strong> <span class="text-dark">@Model.Opis</span></p>
+                        <p><strong class="text-primary">Izdavac:</strong> <span class="text-dark">@Model.Izdavac</span></p>
+                        <p><strong class="text-primary">Godina:</strong> <span class="text-dark">@Model.Godina</span></p>
+                        <p><strong class="text-primary">Broj na Strani:</strong> <span class="text-dark">@Model.BrStrani</span></p>
+                        <p><strong class="text-primary">Zanr:</strong> <span class="text-dark">@Model.Zanr</span></p>
+                        <p><strong class="text-primary">Tiraz:</strong> <span class="text-dark">@Model.Tirazh</span></p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body> 

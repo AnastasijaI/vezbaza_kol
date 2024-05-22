@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Kniga>
+
+@{
+    ViewData["Title"] = "Knigi od Avtor";
+}
+
+<body style="background-image: url('https://p16-flow-sign-va.ciciai.com/ocean-cloud-tos-us/63092a680a28409a911b894a16b97d39.png~tplv-6bxrjdptv7-image.png?rk3s=18ea6f23&x-expires=1747223458&x-signature=pgXzJcmOT5PvluaMW6zNe1lD4Vk%3D');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;">
+
+    <h2>@ViewData["Title"]</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SlikaUrl</th>
+                <th>Naslov</th>
+                <th>Godina</th>
+                <th>BrStrani</th>
+                <th>Opis</th>
+                <th>Zanr</th>
+                <th>Tirazh</th>
+                <th>Izdavac</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@book.SlikaUrl" alt="Book Image" style="max-height: 100px; max-width: 100px;" />
+                    </td>
+                    <td>@book.Naslov</td>
+                    <td>@book.Godina</td>
+                    <td>@book.BrStrani</td>
+                    <td>@book.Opis</td>
+                    <td>@book.Zanr</td>
+                    <td>@book.Tirazh</td>
+                    <td>@book.Izdavac</td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@book.Id">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
